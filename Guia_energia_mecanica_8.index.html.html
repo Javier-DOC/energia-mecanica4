@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Guía Interactiva – Energía Mecánica</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<header>
+    <h1>Guía Interactiva de Energía Mecánica</h1>
+    <p>En esta guía utilizamos <strong>g = 10 m/s²</strong> como aproximación didáctica.</p>
+</header>
+
+<nav>
+    <button aria-label="Ir a simuladores">Simuladores</button>
+    <button aria-label="Ir a comparaciones visuales">Comparaciones</button>
+    <button aria-label="Ir a gráficos interactivos">Gráficos</button>
+    <button aria-label="Ir a ejemplos guiados">Ejemplos guiados</button>
+    <button aria-label="Ir a práctica rápida">Práctica rápida</button>
+</nav>
+
+<main>
+
+<!-- FORMULAS -->
+<section id="formulas">
+    <h2>Fórmulas esenciales</h2>
+
+    <div class="tarjeta-formula">
+        <h3>Trabajo</h3>
+        <p>W = F · d</p>
+        <button id="probar-trabajo" aria-label="Probar fórmula de trabajo en el simulador">Probar</button>
+    </div>
+
+    <div class="tarjeta-formula">
+        <h3>Energía Potencial</h3>
+        <p>Ep = m · g · h</p>
+        <button id="probar-ep" aria-label="Probar fórmula de energía potencial en el simulador">Probar</button>
+    </div>
+
+    <div class="tarjeta-formula">
+        <h3>Energía Cinética</h3>
+        <p>Ec = ½ · m · v²</p>
+        <button id="probar-ec" aria-label="Probar fórmula de energía cinética en el simulador">Probar</button>
+    </div>
+
+    <div class="tarjeta-formula">
+        <h3>Energía Mecánica</h3>
+        <p>Em = Ep + Ec</p>
+        <button id="probar-em" aria-label="Probar fórmula de energía mecánica en el simulador">Probar</button>
+    </div>
+
+    <div class="tarjeta-formula">
+        <h3>Potencia</h3>
+        <p>P = W / t</p>
+        <button id="probar-pot" aria-label="Probar fórmula de potencia en el simulador">Probar</button>
+    </div>
+</section>
+
+<!-- SIMULADORES -->
+<section id="simuladores">
+    <h2>Simuladores</h2>
+
+    <article id="sim-trabajo">
+        <h3>Trabajo Mecánico</h3>
+
+        <label for="fuerza">Fuerza (N)</label>
+        <input id="fuerza" type="number">
+
+        <label for="distancia">Distancia (m)</label>
+        <input id="distancia" type="number">
+
+        <button aria-label="Calcular trabajo mecánico">Calcular</button>
+
+        <p id="resultado-trabajo" aria-live="polite"></p>
+    </article>
+
+    <article id="sim-ep">
+        <h3>Energía Potencial</h3>
+
+        <label for="masa-ep">Masa (kg)</label>
+        <input id="masa-ep" type="number">
+
+        <label for="altura-ep">Altura (m)</label>
+        <input id="altura-ep" type="number">
+
+        <button aria-label="Calcular energía potencial">Calcular</button>
+
+        <p id="resultado-ep" aria-live="polite"></p>
+    </article>
+
+    <article id="sim-ec">
+        <h3>Energía Cinética</h3>
+
+        <label for="masa-ec">Masa (kg)</label>
+        <input id="masa-ec" type="number">
+
+        <label for="velocidad-ec">Velocidad (m/s)</label>
+        <input id="velocidad-ec" type="number">
+
+        <button aria-label="Calcular energía cinética">Calcular</button>
+
+        <p id="resultado-ec" aria-live="polite"></p>
+    </article>
+
+    <article id="sim-em">
+        <h3>Energía Mecánica Total</h3>
+
+        <label for="masa-em">Masa (kg)</label>
+        <input id="masa-em" type="number">
+
+        <label for="velocidad-em">Velocidad (m/s)</label>
+        <input id="velocidad-em" type="number">
+
+        <label for="altura-em">Altura (m)</label>
+        <input id="altura-em" type="number">
+
+        <button aria-label="Calcular energía mecánica total">Calcular</button>
+
+        <p id="resultado-em" aria-live="polite"></p>
+    </article>
+
+    <article id="sim-potencia">
+        <h3>Potencia</h3>
+
+        <label for="trabajo-pot">Trabajo (J)</label>
+        <input id="trabajo-pot" type="number">
+
+        <label for="tiempo-pot">Tiempo (s)</label>
+        <input id="tiempo-pot" type="number">
+
+        <button aria-label="Calcular potencia">Calcular</button>
+
+        <p id="resultado-potencia" aria-live="polite"></p>
+    </article>
+</section>
+
+<!-- COMPARACIONES VISUALES -->
+<section id="comparaciones">
+    <h2>Comparaciones visuales</h2>
+
+    <p>Ingresá una energía para compararla con situaciones reales:</p>
+
+    <label for="comp-real">Energía (J)</label>
+    <input id="comp-real" type="number">
+
+    <button aria-label="Comparar energía con situaciones reales">Comparar</button>
+
+    <p id="resultado-real" aria-live="polite"></p>
+
+    <h3>Comparación A vs B</h3>
+
+    <label for="comp-a">Energía A (J)</label>
+    <input id="comp-a" type="number">
+
+    <label for="comp-b">Energía B (J)</label>
+    <input id="comp-b" type="number">
+
+    <button aria-label="Comparar energías">Comparar</button>
+
+    <p id="resultado-comp" aria-live="polite"></p>
+
+    <div id="barras" style="display:flex; gap:10px; margin-top:20px;">
+        <div id="barra-a" style="background:#4a90e2; width:0; height:20px;"></div>
+        <div id="barra-b" style="background:#e24a4a; width:0; height:20px;"></div>
+    </div>
+
+</section>
+
+<!-- GRAFICOS -->
+<section id="graficos">
+    <h2>Gráficos interactivos</h2>
+
+    <p>En estos gráficos se usa una masa fija de <strong>1 kg</strong>.</p>
+
+    <h3>Energía Potencial vs Altura</h3>
+    <label for="slider-altura">Altura (m): <span id="valor-altura">0</span></label>
+    <input id="slider-altura" type="range" min="0" max="100" value="0">
+
+    <p id="ep-graf" aria-live="polite">Ep = 0 J</p>
+    <div id="barra-ep" style="background:#4a90e2; height:20px; width:0;"></div>
+
+    <p>Escala: 0 J | 2000 J | 4000 J | 6000 J | 8000 J | 10000 J</p>
+
+    <h3>Energía Cinética vs Velocidad</h3>
+    <label for="slider-vel">Velocidad (m/s): <span id="valor-vel">0</span></label>
+    <input id="slider-vel" type="range" min="0" max="40" value="0">
+
+    <p id="ec-graf" aria-live="polite">Ec = 0 J</p>
+    <div id="barra-ec" style="background:#e24a4a; height:20px; width:0;"></div>
+
+    <p>Escala: 0 J | 200 J | 400 J | 800 J | 1600 J | 3200 J</p>
+
+</section>
+
+<!-- EJEMPLOS GUIADOS -->
+<section id="ejemplos">
+    <h2>Ejemplos guiados</h2>
+
+    <article id="ejemplo-ep">
+        <h3>Ejemplo guiado de Energía Potencial</h3>
+        <p id="ep-paso" aria-live="polite">Presioná "Nuevo ejemplo" para comenzar.</p>
+        <button id="ep-nuevo">Nuevo ejemplo</button>
+        <button id="ep-siguiente">Siguiente paso</button>
+    </article>
+
+    <article id="ejemplo-ec">
+        <h3>Ejemplo guiado de Energía Cinética</h3>
+        <p id="ec-paso" aria-live="polite">Presioná "Nuevo ejemplo" para comenzar.</p>
+        <button id="ec-nuevo">Nuevo ejemplo</button>
+        <button id="ec-siguiente">Siguiente paso</button>
+    </article>
+</section>
+
+<!-- PRACTICA RAPIDA -->
+<section id="practica">
+    <h2>Práctica rápida</h2>
+
+    <article>
+        <h3>Ejercicio 1 – Trabajo</h3>
+        <p id="enun-trabajo"></p>
+        <label for="resp-trabajo">Respuesta (J)</label>
+        <input id="resp-trabajo" type="number">
+        <button id="corr-trabajo">Corregir</button>
+        <p id="feed-trabajo" aria-live="polite"></p>
+    </article>
+
+    <article>
+        <h3>Ejercicio 2 – Energía Potencial</h3>
+        <p id="enun-ep"></p>
+        <label for="resp-ep">Respuesta (J)</label>
+        <input id="resp-ep" type="number">
+        <button id="corr-ep">Corregir</button>
+        <p id="feed-ep" aria-live="polite"></p>
+    </article>
+
+    <article>
+        <h3>Ejercicio 3 – Energía Cinética</h3>
+        <p id="enun-ec"></p>
+        <label for="resp-ec">Respuesta (J)</label>
+        <input id="resp-ec" type="number">
+        <button id="corr-ec">Corregir</button>
+        <p id="feed-ec" aria-live="polite"></p>
+    </article>
+
+    <article>
+        <h3>Ejercicio 4 – Energía Mecánica</h3>
+        <p id="enun-em"></p>
+        <label for="resp-em">Respuesta (J)</label>
+        <input id="resp-em" type="number">
+        <button id="corr-em">Corregir</button>
+        <p id="feed-em" aria-live="polite"></p>
+    </article>
+</section>
+
+</main>
+
+<!-- JAVASCRIPT -->
+<script>
+const g = 10;
+
+function num(x) {
+    const n = parseFloat(x);
+    return isNaN(n) ? null : n;
+}
+
+/* --- BOTONES PROBAR (FORMULAS -> SIMULADORES) --- */
+function irASimulador(idSim, idInput) {
+    const seccion = document.getElementById(idSim);
+    if (seccion) {
+        seccion.scrollIntoView({ behavior: 'smooth' });
+        if (idInput) {
+            const campo = document.getElementById(idInput);
+            if (campo) campo.focus();
+        }
+    }
+}
+
+document.getElementById('probar-trabajo').addEventListener('click', () => {
+    irASimulador('sim-trabajo', 'fuerza');
+});
+document.getElementById('probar-ep').addEventListener('click', () => {
+    irASimulador('sim-ep', 'masa-ep');
+});
+document.getElementById('probar-ec').addEventListener('click', () => {
+    irASimulador('sim-ec', 'masa-ec');
+});
+document.getElementById('probar-em').addEventListener('click', () => {
+    irASimulador('sim-em', 'masa-em');
+});
+document.getElementById('probar-pot').addEventListener('click', () => {
+    irASimulador('sim-potencia', 'trabajo-pot');
+});
+
+/* --- SIMULADORES --- */
+document.querySelector('#sim-trabajo button').addEventListener('click', () => {
+    const F = num(document.getElementById('fuerza').value);
+    const d = num(document.getElementById('distancia').value);
+    const out = document.getElementById('resultado-trabajo');
+    if (F === null || d === null) { out.textContent = "Ingresá valores válidos."; return; }
+    out.textContent = `Trabajo realizado: ${F * d} J`;
+});
+
+document.querySelector('#sim-ep button').addEventListener('click', () => {
+    const m = num(document.getElementById('masa-ep').value);
+    const h = num(document.getElementById('altura-ep').value);
+    const out = document.getElementById('resultado-ep');
+    if (m === null || h === null) { out.textContent = "Ingresá valores válidos."; return; }
+    out.textContent = `Energía potencial: ${m * g * h} J`;
+});
+
+document.querySelector('#sim-ec button').addEventListener('click', () => {
+    const m = num(document.getElementById('masa-ec').value);
+    const v = num(document.getElementById('velocidad-ec').value);
+    const out = document.getElementById('resultado-ec');
+    if (m === null || v === null) { out.textContent = "Ingresá valores válidos."; return; }
+    out.textContent = `Energía cinética: ${0.5 * m * v * v} J`;
+});
+
+document.querySelector('#sim-em button').addEventListener('click', () => {
+    const m = num(document.getElementById('masa-em').value);
+    const v = num(document.getElementById('velocidad-em').value);
+    const h = num(document.getElementById('altura-em').value);
+    const out = document.getElementById('resultado-em');
+    if (m === null || v === null || h === null) { out.textContent = "Ingresá valores válidos."; return; }
+    const Ep = m * g * h;
+    const Ec = 0.5 * m * v * v;
+    const Em = Ep + Ec;
+    out.textContent = `Ep = ${Ep} J | Ec = ${Ec} J | Em = ${Em} J`;
+});
+
+document.querySelector('#sim-potencia button').addEventListener('click', () => {
+    const W = num(document.getElementById('trabajo-pot').value);
+    const t = num(document.getElementById('tiempo-pot').value);
+    const out = document.getElementById('resultado-potencia');
+    if (W === null || t === null || t === 0) { out.textContent = "Ingresá valores válidos (el tiempo no puede ser 0)."; return; }
+    out.textContent = `Potencia: ${W / t} W`;
+});
+
+/* --- COMPARACIONES REALISTAS --- */
+document.querySelector('#comparaciones button').addEventListener('click', () => {
+    const E = num(document.getElementById('comp-real').value);
+    const out = document.getElementById('resultado-real');
+    if (E === null) { out.textContent = "Ingresá un valor válido."; return; }
+
+    let texto = "";
+
+    if (E < 500) texto = "Energía similar a levantar una mochila o subir un escalón.";
+    else if (E < 5000) texto = "Energía comparable a una persona corriendo o pedaleando suave.";
+    else if (E < 20000) texto = "Energía similar a un ciclista fuerte o un golpe moderado.";
+    else if (E < 100000) texto = "Energía comparable a un auto a baja velocidad.";
+    else if (E < 500000) texto = "Energía similar a un auto a velocidad media.";
+    else if (E < 2000000) texto = "Energía comparable a un camión en movimiento.";
+    else texto = "Energía del orden de una locomotora o caída desde gran altura.";
+
+    out.textContent = texto;
+});
+
+/* --- COMPARACIÓN A vs B --- */
+document.querySelectorAll('#comparaciones button')[1].addEventListener('click', () => {
+    const A = num(document.getElementById('comp-a').value);
+    const B = num(document.getElementById('comp-b').value);
+    const out = document.getElementById('resultado-comp');
+
+    if (A === null || B === null) { out.textContent = "Ingresá dos energías válidas."; return; }
+
+    if (A === B) out.textContent = "Ambas energías son iguales.";
+    else if (A > B) out.textContent = "La energía A es mayor que la energía B.";
+    else out.textContent = "La energía B es mayor que la energía A.";
+
+    const max = Math.max(A, B);
+    document.getElementById('barra-a').style.width = (A / max * 200) + "px";
+    document.getElementById('barra-b').style.width = (B / max * 200) + "px";
+});
+
+/* --- GRAFICO EP vs ALTURA --- */
+document.getElementById('slider-altura').addEventListener('input', () => {
+    const h = num(document.getElementById('slider-altura').value);
+    const Ep = 1 * g * h;
+
+    document.getElementById('valor-altura').textContent = h;
+    document.getElementById('ep-graf').textContent = `Ep = ${Ep} J`;
+
+    document.getElementById('barra-ep').style.width = (Ep / 10000 * 200) + "px";
+});
+
+/* --- GRAFICO EC vs VELOCIDAD --- */
+document.getElementById('slider-vel').addEventListener('input', () => {
+    const v = num(document.getElementById('slider-vel').value);
+    const Ec = 0.5 * 1 * v * v;
+
+    document.getElementById('valor-vel').textContent = v;
+    document.getElementById('ec-graf').textContent = `Ec = ${Ec} J`;
+
+    document.getElementById('barra-ec').style.width = (Ec / 3200 * 200) + "px";
+});
+
+/* --- EJEMPLOS GUIADOS --- */
+let epEjemplo = { m: 0, h: 0, paso: 0 };
+let ecEjemplo = { m: 0, v: 0, paso: 0 };
+
+document.getElementById('ep-nuevo').addEventListener('click', () => {
+    epEjemplo.m = Math.floor(Math.random() * 10) + 1;   // 1 a 10 kg
+    epEjemplo.h = Math.floor(Math.random() * 20) + 1;   // 1 a 20 m
+    epEjemplo.paso = 1;
+    document.getElementById('ep-paso').textContent =
+        `Datos: masa = ${epEjemplo.m} kg, altura = ${epEjemplo.h} m, g = 10 m/s².`;
+});
+
+document.getElementById('ep-siguiente').addEventListener('click', () => {
+    const p = document.getElementById('ep-paso');
+    if (epEjemplo.paso === 0) {
+        p.textContent = "Primero presioná 'Nuevo ejemplo'.";
+        return;
+    }
+    if (epEjemplo.paso === 1) {
+        p.textContent = "Paso 1: Escribimos la fórmula: Ep = m · g · h.";
+        epEjemplo.paso = 2;
+    } else if (epEjemplo.paso === 2) {
+        p.textContent = `Paso 2: Reemplazamos: Ep = ${epEjemplo.m} · 10 · ${epEjemplo.h}.`;
+        epEjemplo.paso = 3;
+    } else if (epEjemplo.paso === 3) {
+        const Ep = epEjemplo.m * g * epEjemplo.h;
+        p.textContent = `Paso 3: Calculamos: Ep = ${Ep} J.`;
+        epEjemplo.paso = 4;
+    } else {
+        p.textContent = "Interpretación: esa es la energía que tendría el cuerpo por su altura.";
+        epEjemplo.paso = 1;
+    }
+});
+
+document.getElementById('ec-nuevo').addEventListener('click', () => {
+    ecEjemplo.m = Math.floor(Math.random() * 20) + 1;   // 1 a 20 kg
+    ecEjemplo.v = Math.floor(Math.random() * 15) + 1;   // 1 a 15 m/s
+    ecEjemplo.paso = 1;
+    document.getElementById('ec-paso').textContent =
+        `Datos: masa = ${ecEjemplo.m} kg, velocidad = ${ecEjemplo.v} m/s.`;
+});
+
+document.getElementById('ec-siguiente').addEventListener('click', () => {
+    const p = document.getElementById('ec-paso');
+    if (ecEjemplo.paso === 0) {
+        p.textContent = "Primero presioná 'Nuevo ejemplo'.";
+        return;
+    }
+    if (ecEjemplo.paso === 1) {
+        p.textContent = "Paso 1: Escribimos la fórmula: Ec = ½ · m · v².";
+        ecEjemplo.paso = 2;
+    } else if (ecEjemplo.paso === 2) {
+        p.textContent = `Paso 2: Reemplazamos: Ec = 0,5 · ${ecEjemplo.m} · (${ecEjemplo.v})².`;
+        ecEjemplo.paso = 3;
+    } else if (ecEjemplo.paso === 3) {
+        const Ec = 0.5 * ecEjemplo.m * ecEjemplo.v * ecEjemplo.v;
+        p.textContent = `Paso 3: Calculamos: Ec = ${Ec} J.`;
+        ecEjemplo.paso = 4;
+    } else {
+        p.textContent = "Interpretación: esa es la energía que tiene el cuerpo por su movimiento.";
+        ecEjemplo.paso = 1;
+    }
+});
+
+/* --- PRACTICA RAPIDA --- */
+const ejerciciosTrabajo = [
+    {
+        enun: "Un cuerpo desplazado 14 m, con una fuerza aplicada de 20 N.",
+        resultado: 20 * 14
+    },
+    {
+        enun: "Un cuerpo desplazado 500 m, con una fuerza aplicada de 10 N.",
+        resultado: 10 * 500
+    }
+];
+
+const ejerciciosEp = [
+    {
+        enun: "Un coco de 2,4 kg, colgado en una palmera a 3,8 m de altura.",
+        m: 2.4,
+        h: 3.8
+    },
+    {
+        enun: "Una manzana de 120 g, colgada de un árbol a 2 m de altura.",
+        m: 0.12,
+        h: 2
+    }
+];
+
+const ejerciciosEc = [
+    {
+        enun: "Un chico con una masa de 23 kg, corriendo a una velocidad de 6 m/s.",
+        m: 23,
+        v: 6
+    },
+    {
+        enun: "Un automóvil con una masa de 1200 kg, moviéndose a una velocidad de 28 m/s.",
+        m: 1200,
+        v: 28
+    }
+];
+
+const ejerciciosEm = [
+    {
+        enun: "Un pajarito de 500 g, volando a 8 m/s, a una altura de 20 m.",
+        m: 0.5,
+        v: 8,
+        h: 20
+    },
+    {
+        enun: "Un helicóptero de 6000 kg, a una altura de 200 m, suspendido en el aire.",
+        m: 6000,
+        v: 0,
+        h: 200
+    }
+];
+
+let ejTrab, ejEp, ejEc, ejEm;
+
+function elegirEjercicios() {
+    ejTrab = ejerciciosTrabajo[Math.floor(Math.random() * ejerciciosTrabajo.length)];
+    ejEp = ejerciciosEp[Math.floor(Math.random() * ejerciciosEp.length)];
+    ejEc = ejerciciosEc[Math.floor(Math.random() * ejerciciosEc.length)];
+    ejEm = ejerciciosEm[Math.floor(Math.random() * ejerciciosEm.length)];
+
+    document.getElementById('enun-trabajo').textContent = ejTrab.enun;
+    document.getElementById('enun-ep').textContent = ejEp.enun;
+    document.getElementById('enun-ec').textContent = ejEc.enun;
+    document.getElementById('enun-em').textContent = ejEm.enun;
+}
+
+elegirEjercicios();
+
+/* Corrección: solo Correcto / Incorrecto */
+document.getElementById('corr-trabajo').addEventListener('click', () => {
+    const r = num(document.getElementById('resp-trabajo').value);
+    const out = document.getElementById('feed-trabajo');
+    if (r === null) { out.textContent = "Ingresá un valor."; return; }
+    out.textContent = (Math.abs(r - ejTrab.resultado) < 0.5) ? "Correcto." : "Incorrecto.";
+});
+
+document.getElementById('corr-ep').addEventListener('click', () => {
+    const r = num(document.getElementById('resp-ep').value);
+    const out = document.getElementById('feed-ep');
+    if (r === null) { out.textContent = "Ingresá un valor."; return; }
+    const Ep = ejEp.m * g * ejEp.h;
+    out.textContent = (Math.abs(r - Ep) < 0.5) ? "Correcto." : "Incorrecto.";
+});
+
+document.getElementById('corr-ec').addEventListener('click', () => {
+    const r = num(document.getElementById('resp-ec').value);
+    const out = document.getElementById('feed-ec');
+    if (r === null) { out.textContent = "Ingresá un valor."; return; }
+    const Ec = 0.5 * ejEc.m * ejEc.v * ejEc.v;
+    out.textContent = (Math.abs(r - Ec) < 0.5) ? "Correcto." : "Incorrecto.";
+});
+
+document.getElementById('corr-em').addEventListener('click', () => {
+    const r = num(document.getElementById('resp-em').value);
+    const out = document.getElementById('feed-em');
+    if (r === null) { out.textContent = "Ingresá un valor."; return; }
+    const Ep = ejEm.m * g * ejEm.h;
+    const Ec = 0.5 * ejEm.m * ejEm.v * ejEm.v;
+    const Em = Ep + Ec;
+    out.textContent = (Math.abs(r - Em) < 0.5) ? "Correcto." : "Incorrecto.";
+});
+</script>
+
+</body>
+</html>
